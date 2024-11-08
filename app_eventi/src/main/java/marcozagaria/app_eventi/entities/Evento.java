@@ -1,33 +1,40 @@
 package marcozagaria.app_eventi.entities;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "eventi")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Evento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue()
+    @Setter(AccessLevel.NONE)
     private UUID id;
-
-    @Column(nullable = false)
-    private String title;
-
-    @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = false)
-    private LocalDateTime date;
-
-    @Column(nullable = false)
-    private String location;
-
-    @Column(nullable = false)
-    private int availableSeats;
+    private String titolo;
+    private String descrizione;
+    private LocalDateTime dataEvento;
+    private String luogo;
+    private int postiDisponibili;
 
     @ManyToOne
-    @JoinColumn(name = "organizzatore_id", nullable = false)
+    @JoinColumn(name = "organizzatore_id")
     private Utente oraganizzatore;
+
+    public Evento(String titolo, String descrizione, LocalDateTime dataEvento, String luogo, int postiDisponibili, Utente oraganizzatore) {
+        this.titolo = titolo;
+        this.descrizione = descrizione;
+        this.dataEvento = dataEvento;
+        this.luogo = luogo;
+        this.postiDisponibili = postiDisponibili;
+        this.oraganizzatore = oraganizzatore;
+    }
 }
