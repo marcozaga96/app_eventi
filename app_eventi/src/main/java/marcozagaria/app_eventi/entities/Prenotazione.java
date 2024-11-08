@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -28,9 +28,11 @@ public class Prenotazione {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
-    private LocalDateTime dataDiPrenotazione;
+    private LocalDate dataDiPrenotazione;
 
-    public Prenotazione(LocalDateTime dataDiPrenotazione) {
+    public Prenotazione(Utente utente, Evento evento, LocalDate dataDiPrenotazione) {
+        this.utente = utente;
+        this.evento = evento;
         this.dataDiPrenotazione = dataDiPrenotazione;
     }
 }
