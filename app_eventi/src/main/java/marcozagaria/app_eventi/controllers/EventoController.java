@@ -26,7 +26,7 @@ public class EventoController {
     @PostMapping
     @PreAuthorize("hasAuthority('ORGANIZZATORE_EVENTI')")
     @ResponseStatus(HttpStatus.CREATED)
-    public Evento createBlogPOst(@RequestBody EventoDTO body) {
+    public Evento createEvento(@RequestBody EventoDTO body) {
         return eventoService.saveEvento(body);
     }
 
