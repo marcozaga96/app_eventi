@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -21,7 +21,7 @@ public class Evento {
     private UUID id;
     private String titolo;
     private String descrizione;
-    private LocalDateTime dataEvento;
+    private LocalDate dataEvento;
     private String luogo;
     private int postiDisponibili;
 
@@ -29,7 +29,7 @@ public class Evento {
     @JoinColumn(name = "organizzatore_id")
     private Utente oraganizzatore;
 
-    public Evento(String titolo, String descrizione, LocalDateTime dataEvento, String luogo, int postiDisponibili, Utente oraganizzatore) {
+    public Evento(String titolo, String descrizione, LocalDate dataEvento, String luogo, int postiDisponibili, Utente oraganizzatore) {
         this.titolo = titolo;
         this.descrizione = descrizione;
         this.dataEvento = dataEvento;
