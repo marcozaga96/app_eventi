@@ -45,6 +45,6 @@ public class Utente implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.getEmail();
+        return this.getUsername();
     }
 }
